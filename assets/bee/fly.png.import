@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqrpekov1q0h6"
-path="res://.godot/imported/Take Hit - white silhouette.png-55aa28bef860d26a2fe214cc3e460331.ctex"
+uid="uid://cbkjuiwrdawhl"
+path="res://.godot/imported/fly.png-f795be86a1d1fe0170916cad9dece56b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/playersprites/Take Hit - white silhouette.png"
-dest_files=["res://.godot/imported/Take Hit - white silhouette.png-55aa28bef860d26a2fe214cc3e460331.ctex"]
+source_file="res://assets/bee/fly.png"
+dest_files=["res://.godot/imported/fly.png-f795be86a1d1fe0170916cad9dece56b.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxf06j5gi7ihy"
-path="res://.godot/imported/fall.png-dae67462f231b136e6911111a95f1d23.ctex"
+uid="uid://dx15t6scwd7u1"
+path="res://.godot/imported/hit.png-374436de40c39c4ffa2c0a7e76102d3c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/props/dino/fall.png"
-dest_files=["res://.godot/imported/fall.png-dae67462f231b136e6911111a95f1d23.ctex"]
+source_file="res://assets/playersprites/hit.png"
+dest_files=["res://.godot/imported/hit.png-374436de40c39c4ffa2c0a7e76102d3c.ctex"]
 
 [params]
 

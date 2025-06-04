@@ -1,0 +1,110 @@
+[gd_scene load_steps=6 format=3 uid="uid://bom6r7tq0yh"]
+
+[ext_resource type="Script" uid="uid://dpmw5twlgib70" path="res://game.gd" id="1_7jktm"]
+[ext_resource type="Texture2D" uid="uid://boro3xiftu6bv" path="res://assets/bg/1.Sky_free.png" id="1_80nbo"]
+[ext_resource type="Texture2D" uid="uid://bxsnw2gdscdm5" path="res://assets/bg/2.Mountains.png" id="2_fc0e3"]
+[ext_resource type="Texture2D" uid="uid://b57lwqdf5ijqi" path="res://assets/bg/3.Trees_back.png" id="3_7jktm"]
+[ext_resource type="Texture2D" uid="uid://cxgo2imjs5rff" path="res://assets/bg/4.Groundt.png" id="4_ryrav"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_7jktm")
+scroll_speed = 50.0
+seconds_per_minute = 5
+scroll_speed_increase = 50.0
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+unique_name_in_owner = true
+repeat_size = Vector2(320, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+texture = ExtResource("1_80nbo")
+centered = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="Parallax2D"]
+texture = ExtResource("2_fc0e3")
+centered = false
+
+[node name="Sprite2D3" type="Sprite2D" parent="Parallax2D"]
+texture = ExtResource("3_7jktm")
+centered = false
+
+[node name="Sprite2D4" type="Sprite2D" parent="Parallax2D"]
+texture = ExtResource("4_ryrav")
+centered = false
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/Control"]
+custom_minimum_size = Vector2(180, 150)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="UI/Control/MarginContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="UI/Control/MarginContainer/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "JUMP"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -26.5
+offset_right = 26.5
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="Minute" type="Label" parent="UI/Control/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="UI/Control/HBoxContainer"]
+layout_mode = 2
+text = ":"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Second" type="Label" parent="UI/Control/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="UI/Control"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 10.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Speed: <value>"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

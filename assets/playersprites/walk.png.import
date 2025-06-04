@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpl0bdne8518n"
-path="res://.godot/imported/Take Hit.png-7d97135e96b723cc27fb154be6acbabd.ctex"
+uid="uid://c6rde4jgjyi33"
+path="res://.godot/imported/walk.png-738f31c67b1bde6822f184a5a56d7ca0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/playersprites/Take Hit.png"
-dest_files=["res://.godot/imported/Take Hit.png-7d97135e96b723cc27fb154be6acbabd.ctex"]
+source_file="res://assets/playersprites/walk.png"
+dest_files=["res://.godot/imported/walk.png-738f31c67b1bde6822f184a5a56d7ca0.ctex"]
 
 [params]
 
