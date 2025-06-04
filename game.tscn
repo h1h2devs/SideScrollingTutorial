@@ -1,36 +1,65 @@
-[gd_scene load_steps=6 format=3 uid="uid://bom6r7tq0yh"]
+[gd_scene load_steps=8 format=3 uid="uid://bom6r7tq0yh"]
 
 [ext_resource type="Script" uid="uid://dpmw5twlgib70" path="res://game.gd" id="1_7jktm"]
 [ext_resource type="Texture2D" uid="uid://boro3xiftu6bv" path="res://assets/bg/1.Sky_free.png" id="1_80nbo"]
 [ext_resource type="Texture2D" uid="uid://bxsnw2gdscdm5" path="res://assets/bg/2.Mountains.png" id="2_fc0e3"]
 [ext_resource type="Texture2D" uid="uid://b57lwqdf5ijqi" path="res://assets/bg/3.Trees_back.png" id="3_7jktm"]
 [ext_resource type="Texture2D" uid="uid://cxgo2imjs5rff" path="res://assets/bg/4.Groundt.png" id="4_ryrav"]
+[ext_resource type="PackedScene" uid="uid://b0reql6r5syoi" path="res://scenes/player.tscn" id="6_ryrav"]
 
-[node name="Game" type="Node2D"]
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7jktm"]
+
+[node name="Game" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_7jktm")
+player = NodePath("Player")
 scroll_speed = 50.0
 seconds_per_minute = 5
 scroll_speed_increase = 50.0
 
-[node name="Parallax2D" type="Parallax2D" parent="."]
+[node name="Background" type="Node2D" parent="."]
+
+[node name="SkyFree" type="Parallax2D" parent="Background"]
 unique_name_in_owner = true
+scroll_scale = Vector2(0.1, 1)
 repeat_size = Vector2(320, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+[node name="Sprite2D" type="Sprite2D" parent="Background/SkyFree"]
 texture = ExtResource("1_80nbo")
 centered = false
 
-[node name="Sprite2D2" type="Sprite2D" parent="Parallax2D"]
+[node name="Mountains" type="Parallax2D" parent="Background"]
+unique_name_in_owner = true
+scroll_scale = Vector2(0.5, 1)
+repeat_size = Vector2(320, 0)
+autoscroll = Vector2(-10, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Mountains"]
 texture = ExtResource("2_fc0e3")
 centered = false
 
-[node name="Sprite2D3" type="Sprite2D" parent="Parallax2D"]
+[node name="Trees" type="Parallax2D" parent="Background"]
+unique_name_in_owner = true
+scroll_scale = Vector2(0.6, 1)
+repeat_size = Vector2(320, 0)
+autoscroll = Vector2(-10, 0)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Background/Trees"]
 texture = ExtResource("3_7jktm")
 centered = false
 
-[node name="Sprite2D4" type="Sprite2D" parent="Parallax2D"]
+[node name="Ground" type="Parallax2D" parent="."]
+unique_name_in_owner = true
+repeat_size = Vector2(320, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground"]
 texture = ExtResource("4_ryrav")
 centered = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Ground"]
+position = Vector2(0, 160)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_7jktm")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
@@ -44,6 +73,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/Control"]
 custom_minimum_size = Vector2(180, 150)
@@ -52,15 +82,18 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -31.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="UI/Control/MarginContainer"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Button" type="Button" parent="UI/Control/MarginContainer/PanelContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
 text = "JUMP"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/Control"]
@@ -107,4 +140,9 @@ text = "Speed: <value>"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Player" parent="." instance=ExtResource("6_ryrav")]
+position = Vector2(28, 131)
+JUMP_VELOCITY = -350.0
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="button_down" from="UI/Control/MarginContainer/PanelContainer/Button" to="." method="_on_button_button_down"]
