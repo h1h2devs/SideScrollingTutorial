@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bom6r7tq0yh"]
+[gd_scene load_steps=9 format=3 uid="uid://bom6r7tq0yh"]
 
 [ext_resource type="Script" uid="uid://dpmw5twlgib70" path="res://game.gd" id="1_7jktm"]
 [ext_resource type="Texture2D" uid="uid://boro3xiftu6bv" path="res://assets/bg/1.Sky_free.png" id="1_80nbo"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b57lwqdf5ijqi" path="res://assets/bg/3.Trees_back.png" id="3_7jktm"]
 [ext_resource type="Texture2D" uid="uid://cxgo2imjs5rff" path="res://assets/bg/4.Groundt.png" id="4_ryrav"]
 [ext_resource type="PackedScene" uid="uid://b0reql6r5syoi" path="res://scenes/player.tscn" id="6_ryrav"]
+[ext_resource type="PackedScene" uid="uid://s8eg8xx6a17u" path="res://scenes/enemy.tscn" id="7_eow3j"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7jktm"]
 
@@ -140,9 +141,30 @@ text = "Speed: <value>"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="health" type="Label" parent="UI/Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 36.0
+offset_bottom = 59.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "health: <value>"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Player" parent="." instance=ExtResource("6_ryrav")]
 position = Vector2(28, 131)
 JUMP_VELOCITY = -350.0
+health = 1.0
+
+[node name="Enemy" parent="." instance=ExtResource("7_eow3j")]
+position = Vector2(158, 134)
+run_speed = 15.0
+damage = 1.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="button_down" from="UI/Control/MarginContainer/PanelContainer/Button" to="." method="_on_button_button_down"]
