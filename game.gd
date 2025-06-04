@@ -29,8 +29,10 @@ var second: int:
 func _ready() -> void:
 	set_scroll_speed() # sets the scroll speed and text if ur gona have a speed text
 	%health.text = " Health: " + str(player.health)
-
+	%gold.text = "Gold: " + str(Global.gold)
+	
 func _process(delta: float) -> void:
+	%gold.text = "Gold: " + str(Global.gold)
 	increase_scroll_speed(delta)
 	set_scroll_speed()
 

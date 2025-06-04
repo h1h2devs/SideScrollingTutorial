@@ -54,6 +54,7 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_smehm"]
+radius = 6.5
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
